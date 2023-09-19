@@ -4,7 +4,7 @@
 #include "main.h"
 
 /**
- * main - program that generates random valid
+ * main - Entry Point for a program that generates random valid
  * passwords for the program 101-crackme
  *
  * Return: Always 0 (Success)
@@ -24,8 +24,8 @@ sum = 0;
 		sum += (pass[i] + '0');
 		putchar(pass[i] + '0');
 		if ((2772 - sum) - '0' < 78)
-		{
-			n = 2772 - sum - '0';
+{
+			n = 2772 - sum;
 			sum += n;
 			putchar(n + '0');
 			break;
