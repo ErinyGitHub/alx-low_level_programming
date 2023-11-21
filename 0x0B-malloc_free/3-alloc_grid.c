@@ -2,21 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
-* finallyfree - free memory
-* @i: interator
-* @p: pointer
-*/
-
-void finallyfree(int **p, int i)
-{
-int j;
-for (j = 0; j < i; j++)
-{
-free(p[j]);
-}
-free(p);
-}
-/**
   * alloc_grid - returns a pointer to a 2 dimensional array of integers.
   * @width: int
   * @height: int
@@ -50,5 +35,3 @@ int **alloc_grid(int width, int height)
 		}
 	return (tab);
 	}
-return (NULL);
-}
