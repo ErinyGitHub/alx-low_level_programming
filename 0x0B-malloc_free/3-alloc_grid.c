@@ -17,36 +17,38 @@ free(p[j]);
 free(p);
 }
 /**
-  * alloc_grid - concatenates two strings
-  *
-  * @width: width array
-  * @height: height array
-  * Return: pointer to 2D array
+  * alloc_grid - returns a pointer to a 2 dimensional array of integers.
+  * @width: int
+  * @height: int
+  * Return: 2d  array
 */
 int **alloc_grid(int width, int height)
 {
-	int **p;
-	int i, j;
-
-	if (width > 0 && height > 0)
+	int **tab, i, j;
+	tab = malloc(sizeof(*tab) * height);
+	if (width <= 0 || heigh <= 0 || tab == 0)
 	{
-		p = (int **)malloc(sizeof(int *) * height);
-		if (p == NULL)
 		return (NULL);
+	}
+	else
+	{
 		for (i = 0; i <  height; i++)
 		{
-			p[i] = (int *)malloc((width) * sizeof(int));
-			if (p[i] == NULL)
+			tab[i] = malloc(sizeof(**tab) * width);
+			if (tab[i] == 0)
 			{
-			finallyfree(p, i);
-			return (0);
+			/*Free everything if malloc fails*/
+				while (i--)
+					free(tab[i]);
+				free(tab);
+			return (NULL);
 			}
 			for (j = 0; j < width; j++)
-			{
-				p[i][j] = 0;
+			
+				tab[i][j] = 0;
 			}
 		}
-	return (p);
+	return (tab);
 	}
 return (NULL);
-
+}
